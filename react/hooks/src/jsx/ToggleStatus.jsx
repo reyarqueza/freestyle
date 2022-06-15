@@ -2,6 +2,7 @@ import React, {useState} from "react";
 
 export default function ToggleStatus() {
   const [status, setStatus] = useState(false);  
+  
   function toggleStatus() {
     status ? setStatus(false) : setStatus(true);
   }
