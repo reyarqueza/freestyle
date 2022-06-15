@@ -1,8 +1,8 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 export default function ToggleStatus() {
-  const [status, setStatus] = useState(false);  
-  
+  const [status, setStatus] = useState(false);
+
   function toggleStatus() {
     status ? setStatus(false) : setStatus(true);
   }
@@ -13,5 +13,5 @@ export default function ToggleStatus() {
       <h3>status is {`${status}`}</h3>
       <button onClick={toggleStatus}>Toggle Status</button>
     </>
-  )
-};
+  );
+}
