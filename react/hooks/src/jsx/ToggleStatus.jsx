@@ -8,7 +8,6 @@ export default function ToggleStatus() {
 
   return (
     <>
-      <hr />
       <h2>Toggle Status with useState</h2>
       <h3>status is {`${status}`}</h3>
       <button onClick={toggleStatus}>Toggle Status</button>

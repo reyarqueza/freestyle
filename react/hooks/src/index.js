@@ -6,6 +6,7 @@ console.log("React.version", React.version);
 ReactDOM.render(
   <div>
     <h1>Hooks Examples</h1>
+    <hr />
     <ToggleStatus />
   </div>,
   document.getElementById("root")
