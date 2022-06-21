@@ -9,3 +9,5 @@ Reduce, however is just a touch more feature-filled, as you can see in the code.
 
 ## Find and Sort
 Find is similiar to filter, but will return only one item.
+
+Sort relies on the difference of args a and b. By default if no callback is provided, the equivalent of (a,b) => a - b is passed in as the callback, and the array is sorted in an ascending order. To descend, pass in (a,b) => b - a
