@@ -60,4 +60,15 @@ const user: User = new UserAccount("Murphy", 1);
 
 # Composing Types - Unions and Generics
 
+## Unions
+
+```
 type WindowStates = "open" | "closed" | "minimized";
+```
+
+## Generics
+
+```
+type StudentNames = Array<string>;
+type Students = Array<{ name: string; id: number}>
+```
