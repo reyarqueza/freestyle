@@ -5,12 +5,30 @@
 TypeScripts takes from JavaScript: boolean, bigint, null, number, string, symbol, and undefined
 Added to TypeScript: any, unknown, never
 
-## Variable Declaration
+Typescript uses Type Annotations to define types:
+
+## Variable Type Annotations
 
 ```
 const userName: string;
 const phoneNum: number;
 const bitCoinUser: string = 'satoshi';
+```
+
+## Parameter Type Annotations
+
+```
+function helloWorld(name: string) {
+
+}
+```
+
+## Return Type Annotations
+
+```
+function getUser(id: number): string {
+  return "Sushi";
+}
 ```
 
 # Defining Types - Interface
