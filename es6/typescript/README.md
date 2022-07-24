@@ -226,6 +226,73 @@ function greeter(fn: GreetFunction) {
 }
 ```
 
+## Rest Parameters
+
+```
+function multiply(n: number, ...m: number[]) {
+  return m.map((x) => n * x);
+}
+// 'a' gets value [10, 20, 30, 40]
+const a = multiply(10, 1, 2, 3, 4);
+```
+
+## Rest Arguments
+
+```
+// Inferred as 2-length tuple
+const args = [8, 5] as const;
+// OK
+const angle = Math.atan2(...args);
+```
+
+## Parameter Destructring
+
+```
+// Same as prior example
+type ABC = { a: number; b: number; c: number };
+function sum({ a, b, c }: ABC) {
+  console.log(a + b + c);
+}
+```
+
+## Typescript ES6 Modules
+
+```
+// @filename: animal.ts
+export type Cat = { breed: string; yearOfBirth: number };
+ 
+export interface Dog {
+  breeds: string[];
+  yearOfBirth: number;
+}
+ 
+// @filename: app.ts
+import { Cat, Dog } from "./animal.js";
+type Animals = Cat | Dog;
+```
+
+Notice that imports are from the .js not the .ts files.
+
+You can also use the **import type** syntax to show these are types:
+
+## import type
+```
+// @filename: valid.ts
+import type { Cat, Dog } from "./animal.js";
+export type Animals = Cat | Dog;
+```
+
+You can also do this inline with an **inline import type**
+
+## inline import type
+
+```
+// @filename: app.ts
+import { createCatName, type Cat, type Dog } from "./animal.js";
+ 
+export type Animals = Cat | Dog;
+```
+
 ## 2. Classes
 
 For classes with **public field declaration** (sidenote outside of TypeScript - JavaScript added **public class fields** natively to browsers in 2019-2021. Before these years, you need this supported in your es6 build process.)
