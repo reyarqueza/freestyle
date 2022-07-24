@@ -203,6 +203,29 @@ function liveDangerously(x?: number | null) {
 
 Its alot shorter than: x && x.toFixed()
 
+## Function Type Expressions
+
+```
+function greeter(fn: (a: string) => void) {
+  fn("Hello, World");
+}
+ 
+function printToConsole(s: string) {
+  console.log(s);
+}
+ 
+greeter(printToConsole);
+```
+
+Use a **type alias** to clean up nested code
+
+```
+type GreetFunction = (a: string) => void;
+function greeter(fn: GreetFunction) {
+  // ...
+}
+```
+
 ## 2. Classes
 
 For classes with **public field declaration** (sidenote outside of TypeScript - JavaScript added **public class fields** natively to browsers in 2019-2021. Before these years, you need this supported in your es6 build process.)
