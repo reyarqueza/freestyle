@@ -11,7 +11,7 @@ Added to TypeScript: any, unknown, never
 
 ## Variable Type Annotations
 
-```
+```typescript
 const userName: string;
 const phoneNum: number;
 const bitCoinUser: string = 'satoshi';
@@ -19,7 +19,7 @@ const bitCoinUser: string = 'satoshi';
 
 ## Parameter Type Annotations
 
-```
+```typescript
 function helloWorld(name: string) {
 
 }
@@ -27,7 +27,7 @@ function helloWorld(name: string) {
 
 ## Return Type Annotations
 
-```
+```typescript
 function getUser(id: number): string {
   return "Sushi";
 }
@@ -37,7 +37,7 @@ function getUser(id: number): string {
 
 Semicolon or Comma can be used as a separator. Last separator is optional.
 
-```
+```typescript
 function printCoord(point: {x: number; y: number}) {
 
 }
@@ -51,7 +51,7 @@ function printCoord(point: {x: number, y: number}) {
 
 Use the ? mark after the variable to specify a property as optional.
 
-```
+```typescript
 function printName(name: {first: string, last?: string}) {
 
 }
@@ -61,7 +61,7 @@ function printName(name: {first: string, last?: string}) {
 
 Unions as a parameter type.
 
-```
+```typescript
 function printId(id: number | string) {
   console.log("Your ID is: " + id);
 }
@@ -71,7 +71,7 @@ function printId(id: number | string) {
 
 Instead of manually writing your Object Types and Union Types, why not alias them with **Type Aliases**
 
-```
+```typescript
 type Point = {
   x: number;
   y: number;
@@ -92,13 +92,13 @@ function printId(id: ID) {
 
 Use **interface** to describe your objects just like Type Aliases
 
-```
+```typescript
 interface User {
   name: string;
   id: number;
 }
 
-VS
+// VS
 
 type User = {
   name: string;
@@ -111,7 +111,7 @@ See https://www.typescriptlang.org/docs/handbook/2/everyday-types.html for detai
 
 
 Moving on, use the new type name in your variable declaration:
-```
+```typescript
 const userBitCoin: User = {
   name: 'satoshi',
   id: 1,
@@ -119,7 +119,7 @@ const userBitCoin: User = {
 ```
 
 ## Type Assertions
-```
+```typescript
 const myCanvas = document.getElementById("main_canvas") as HTMLCanvasElement;
 
 OR
@@ -129,7 +129,7 @@ const myCanvas = <HTMLCanvasElement>document.getElementById("main_canvas");
 
 ## Literal Type
 
-```
+```typescript
 const testing: "test"
 ```
 
@@ -137,7 +137,7 @@ Literal types are more useful with unions.
 
 In the example below, literal types are used with unions as a **parameter type annotation**
 
-```
+```typescript
 function printText(s: string, alignment: "left" | "right" | "center") {
 
 }
@@ -145,7 +145,7 @@ function printText(s: string, alignment: "left" | "right" | "center") {
 
 Below is a **numeric literal type** in a **return type annotation**.
 
-```
+```typescript
 function compare(a: string, b: string): -1 | 0 | 1 {
   return a === b ? 0 : a > b ? 1 : -1;
 }
@@ -153,7 +153,7 @@ function compare(a: string, b: string): -1 | 0 | 1 {
 
 Below you can do unions of interface with a string literal type.
 
-```
+```typescript
 interface Options {
   width: number;
 }
@@ -166,7 +166,7 @@ configure("auto");
 
 ### Literal Inference
 
-```
+```typescript
 const req = { url: "https://example.com", method: "GET" };
 handleRequest(req.url, req.method);
 
@@ -177,7 +177,7 @@ method is expecting a literal type "GET" not the string "GET".
 
 Fix it with this:
 
-```
+```typescript
 // Change 1:
 const req = { url: "https://example.com", method: "GET" as "GET" };
 // Change 2
@@ -186,7 +186,7 @@ handleRequest(req.url, req.method as "GET");
 
 OR this:
 
-```
+```typescript
 const req = { url: "https://example.com", method: "GET" } as const;
 handleRequest(req.url, req.method);
 ```
@@ -194,7 +194,7 @@ handleRequest(req.url, req.method);
 ### Non-null Assertion Operator (Postfix!)
 
 use **!** to check if its not null or undefined 
-```
+```typescript
 function liveDangerously(x?: number | null) {
   // No error
   console.log(x!.toFixed());
@@ -205,7 +205,7 @@ Its alot shorter than: x && x.toFixed()
 
 ## Function Type Expressions
 
-```
+```typescript
 function greeter(fn: (a: string) => void) {
   fn("Hello, World");
 }
@@ -219,7 +219,7 @@ greeter(printToConsole);
 
 Use a **type alias** to clean up nested code
 
-```
+```typescript
 type GreetFunction = (a: string) => void;
 function greeter(fn: GreetFunction) {
   // ...
@@ -228,7 +228,7 @@ function greeter(fn: GreetFunction) {
 
 ## Rest Parameters
 
-```
+```typescript
 function multiply(n: number, ...m: number[]) {
   return m.map((x) => n * x);
 }
@@ -238,7 +238,7 @@ const a = multiply(10, 1, 2, 3, 4);
 
 ## Rest Arguments
 
-```
+```typescript
 // Inferred as 2-length tuple
 const args = [8, 5] as const;
 // OK
@@ -247,7 +247,7 @@ const angle = Math.atan2(...args);
 
 ## Parameter Destructring
 
-```
+```typescript
 // Same as prior example
 type ABC = { a: number; b: number; c: number };
 function sum({ a, b, c }: ABC) {
@@ -257,7 +257,7 @@ function sum({ a, b, c }: ABC) {
 
 ## Typescript ES6 Modules
 
-```
+```typescript
 // @filename: animal.ts
 export type Cat = { breed: string; yearOfBirth: number };
  
@@ -276,7 +276,7 @@ Notice that imports are from the .js not the .ts files.
 You can also use the **import type** syntax to show these are types:
 
 ## import type
-```
+```typescript
 // @filename: valid.ts
 import type { Cat, Dog } from "./animal.js";
 export type Animals = Cat | Dog;
@@ -286,7 +286,7 @@ You can also do this inline with an **inline import type**
 
 ## inline import type
 
-```
+```typescript
 // @filename: app.ts
 import { createCatName, type Cat, type Dog } from "./animal.js";
  
@@ -299,7 +299,7 @@ For classes with **public field declaration** (sidenote outside of TypeScript - 
 
 For below, variable declarations with types in TypeScript for both the **public class fields** and the arguments in the constructor are as follows:
 
-```
+```typescript
 class UserAccount {
   name: string;
   id: number;
@@ -312,7 +312,7 @@ class UserAccount {
 ```
 
 Use the interface declaration with the class:
-```
+```typescript
 const user: User = new UserAccount("Murphy", 1);
 ```
 
@@ -324,13 +324,13 @@ const user: User = new UserAccount("Murphy", 1);
 
 ## Unions
 
-```
+```typescript
 type WindowStates = "open" | "closed" | "minimized";
 ```
 
 ## Generics
 
-```
+```typescript
 type StudentNames = Array<string>;
 type Students = Array<{ name: string; id: number}>
 ```
