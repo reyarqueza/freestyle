@@ -1,10 +1,10 @@
 export default function smallestPostive(numbers) {
-  const smallestPostive = 1;
-  const filteredAndSorted = [...new Set(numbers)]
-    .filter((item) => item > 0)
-    .sort();
+  const filteredNums = numbers.filter((number) => number > 0);
 
-    return filteredAndSorted && filteredAndSorted.length
-      ? filteredAndSorted.reduce((prev, curr) => prev < curr ? prev : curr)
-      : smallestPostive
+  const smallestPos =
+    filteredNums &&
+    filteredNums.length > 0 &&
+    filteredNums.reduce((prev, curr) => (prev < curr ? prev : curr));
+
+  return smallestPos ? smallestPos : 1;
 }
