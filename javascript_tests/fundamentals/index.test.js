@@ -9,6 +9,8 @@ import {
   mergeUsersES6,
   mergeUserDataES5,
   mergeUserDataES6,
+  createPromiseFromApiUrlWithThen,
+  createPromiseFromApiUrlWithAsync,
 } from "./index";
 
 describe("Test for an array of numbers", () => {
@@ -143,5 +145,58 @@ describe("es5 and es6 merging of objects", () => {
   test("Merge two objects with ES6 syntax", () => {
     const mockUserMerged = { ...userData1, ...userData2 };
     expect(mergeUserDataES6(userData1, userData2).toBe(mockUserMerged));
+  });
+});
+
+describe("Async test group", () => {
+  /* test url returns the following json: */
+  const dataJson = {
+    posts: [
+      {
+        id: 1,
+        title: "Post 1",
+      },
+      {
+        id: 2,
+        title: "Post 2",
+      },
+      {
+        id: 3,
+        title: "Post 3",
+      },
+    ],
+    comments: [
+      {
+        id: 1,
+        body: "some comment",
+        postId: 1,
+      },
+      {
+        id: 2,
+        body: "some comment",
+        postId: 1,
+      },
+    ],
+    profile: {
+      name: "typicode",
+    },
+  };
+  const dataApi = "https://my-json-server.typicode.com/typicode/demo/db";
+
+  test("test that promise =with then= returns correct data", () => {
+    createPromiseFromApiUrlWithThen.then((data) => {
+      expect(data).toBe(dataJson);
+    });
+  });
+
+  test("test that promise =with then= returns correct data", () => {
+    createPromiseFromApiUrlWithThen.then((data) => {
+      expect(data).toBe(dataJson);
+    });
+  });
+
+  test("test that promise with async returns correct data", async () => {
+    const data = await createPromiseFromApiUrlWithAsync(dataApi);
+    expect(data).toBe(dataJson);
   });
 });

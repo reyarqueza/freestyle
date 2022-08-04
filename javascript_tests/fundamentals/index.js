@@ -102,3 +102,11 @@ const userData2 = {
 export function mergeUserDataES5(user1, user2) {}
 
 export function mergeUserDataES6(user1, user2) {}
+
+/*
+const testDataUrl = 'https://my-json-server.typicode.com/typicode/demo/db';
+*/
+
+export function createPromiseFromApiUrlWithThen(testDataUrl) {}
+
+export function createPromiseFromApiUrlWithAsync(testDataUrl) {}
