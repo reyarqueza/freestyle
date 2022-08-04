@@ -1,0 +1,15 @@
+{
+  "name": "smallest-positive",
+  "version": "1.0.0",
+  "description": "Write a function:",
+  "main": "smallest-positive.js",
+  "scripts": {
+    "test": "jest --watchAll"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.18.6",
+    "jest": "^28.1.3"
+  }
+}
